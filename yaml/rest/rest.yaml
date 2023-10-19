@@ -1,0 +1,12 @@
+- route:
+    id: rest-test
+    from:
+      uri: rest:post:rest-test
+      steps:
+        - set-body:
+            constant: >
+              {"id":"yoonms5319"}
+        - unmarshal:
+            json: { }
+        - log: ${headers}
+#        - to: rest:post:/http-service?host=localhost:8080&bridgeEndpoint=true

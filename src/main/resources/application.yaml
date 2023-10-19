@@ -1,0 +1,29 @@
+spring:
+  config:
+    activate:
+      on-profile: file
+server:
+  port: 1234
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/file/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: http
+server:
+  port: 1235
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/http/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: rest
+server:
+  port: 1236
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/rest/*.yaml

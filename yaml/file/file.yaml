@@ -1,0 +1,12 @@
+- route:
+    id: file-test
+#    auto-startup: true
+    from:
+      uri: "file:C:/dev/study/demo/input?noop=true&fileName=test.json"
+      steps:
+        - log: ${body}
+        - process:
+            ref: fileWriteProcessor
+        - log: "FileWriteProcessor: ${headers}"
+        - log: ${header.Name}
+        - to: "file:C:/dev/study/demo/output"
