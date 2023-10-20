@@ -26,6 +26,24 @@ public class HttpController {
     this.fluentProducerTemplate = fluentProducerTemplate;
   }
 
+  @GetMapping("/http")
+  public ResponseEntity<String> http(){
+    log.info("hello");
+    return ResponseEntity.ok().body("hi");
+  }
+
+  @GetMapping("/http1")
+  public ResponseEntity<String> http(@RequestParam String name){
+    log.info("hello: {}",name);
+    return ResponseEntity.ok().body(name);
+  }
+
+  @PostMapping("/http2")
+  public ResponseEntity<MemberDto> http(@RequestBody MemberDto memberDto){
+    log.info("hello: {}",memberDto);
+    return ResponseEntity.ok().body(memberDto);
+  }
+
   @PostMapping("/http-service")
   public ResponseEntity<String> httpService(@RequestBody MemberDto memberDto){
     log.info("{}",memberDto);

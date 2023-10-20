@@ -1,0 +1,19 @@
+- route:
+    id: srv-test
+    from:
+      uri: timer://srv-test?period=10000
+      steps:
+#        - to: http://localhost:8080/http
+#        - to: http://localhost:8080/http1?name=윤명석
+        - setHeader:
+            name: Content-Type
+            constant: application/json; charset=utf-8
+#        - setHeader:
+#            name: Http-Method
+#            constant: POST
+        - setBody:
+            constant: > 
+              {"name":"윤명석","age":20}
+        - to: http://localhost:8080/http2
+        - log: ${headers}
+        - log: ${body}

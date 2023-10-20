@@ -9,4 +9,5 @@
         - unmarshal:
             json: { }
         - log: ${headers}
-#        - to: rest:post:/http-service?host=localhost:8080&bridgeEndpoint=true
+        - log: ${body}
+#        - to: rest:post:/http-test?host=localhost:1235&bridgeEndpoint=true
