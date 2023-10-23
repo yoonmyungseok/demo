@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequiredArgsConstructor
+//@RestController
+//@RequiredArgsConstructor
 @Slf4j
 public class KafkaProducerController {
 
-  private final ProducerService producerService;
+//  private final ProducerService producerService;
 //  @PostMapping(value="/sendMessage")
   public void sendMessage(@RequestHeader("name") String name, @RequestBody MemberDto memberDto){
     log.info("헤더 가져옴: {}",name);
     log.info("바디 가져옴: {}", memberDto);
-    producerService.sendMessage(name);
+//    producerService.sendMessage(name);
   }
 }

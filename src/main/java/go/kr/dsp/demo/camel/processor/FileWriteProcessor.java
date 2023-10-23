@@ -1,4 +1,4 @@
-package go.kr.dsp.demo.camel.fileService.processor;
+package go.kr.dsp.demo.camel.processor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.Exchange;
