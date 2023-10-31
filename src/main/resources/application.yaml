@@ -3,49 +3,59 @@ spring:
     bootstrap-servers: 172.30.1.109:9092
     consumer:
       group-id: group-id-oing
-      auto-offset-reset: earliest
+      auto-offset-reset: latest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: file
-#server:
-#  port: 1234
-#camel:
-#  springboot:
-#    routes-include-pattern: file:yaml/file/*.yaml
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: http
-#server:
-#  port: 1235
-#camel:
-#  springboot:
-#    routes-include-pattern: file:yaml/http/*.yaml
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: rest
-#server:
-#  port: 1236
-#camel:
-#  springboot:
-#    routes-include-pattern: file:yaml/rest/*.yaml
-#---
-#spring:
-#  config:
-#    activate:
-#      on-profile: srv
-#server:
-#  port: 9999
-#camel:
-#  springboot:
-#    routes-include-pattern: file:yaml/srv/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: http
+server:
+  port: 1001
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/http/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: kafka
+server:
+  port: 1101
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/kafka/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: proxy
+server:
+  port: 1201
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/proxy/*.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: fileSend
+server:
+  port: 1301
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/file/fileSend.yaml
+---
+spring:
+  config:
+    activate:
+      on-profile: fileReceive
+server:
+  port: 1401
+camel:
+  springboot:
+    routes-include-pattern: file:yaml/file/fileReceive.yaml

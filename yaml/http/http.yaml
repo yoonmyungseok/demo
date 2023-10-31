@@ -1,26 +1,28 @@
 - route:
     id: http-test
     from:
-      uri: rest:post:http-test
+#      uri: rest:post:http-test
+      uri: jetty:http://localhost:1002/http
       steps:
         - on-completion:
             steps:
-              - log: on-completion-log
+              - log: http-completion-log
         - log: "이전: ${body}"
         - log: "이전: ${headers}"
         - unmarshal:
             json: { }
         - log: ${body}
         - log: ${headers}
-        - convertBodyTo:
-            type: String
+#        - convertBodyTo:
+#            type: String
         - removeHeaders:
             pattern: CamelHttp*
             excludePattern: CamelHttpMethod
         - process:
-            ref: fileWriteProcessor
+            ref: httpProcessor
         - marshal:
             json: { }
         - log: "이후: ${body}"
         - log: "이후: ${headers}"
-        - to: rest:post:rest-test?host=localhost:1236/camel&bridgeEndpoint=true
+#        - to: rest:post:rest-test?host=localhost:1236/camel&bridgeEndpoint=true
+        - to: http://localhost:1102/sendMessage

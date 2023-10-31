@@ -1,0 +1,17 @@
+- route:
+#    id: rest-test
+    id: kafka-test
+    from:
+#      uri: rest:post:rest-test
+      uri: jetty:http://localhost:1102/sendMessage
+      steps:
+#        - set-body:
+#            constant: >
+#              {"id":"yoonms5319"}
+#        - unmarshal:
+#            json: { }
+        - log: ${headers}
+        - log: ${body}
+        - process:
+            ref: kafkaProducerProcessor
+#        - to: rest:post:/http-test?host=localhost:1235&bridgeEndpoint=true

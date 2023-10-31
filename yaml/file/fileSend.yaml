@@ -1,0 +1,16 @@
+- route:
+    id: fileSend-test
+    from:
+      uri: "file:input?noop=true&delay=60000"
+      steps:
+#        - convertBodyTo:
+#            type: byte[]
+#        - unmarshal:
+#            json: { }
+        - setHeader:
+            name: "FileName"
+            simple: ${file:onlyname}
+        - log: "File Name: ${header.FileName}"
+        - process:
+            ref: fileProcessor
+#        - to: "http://localhost:1402/file?bridgeEndpoint=true"

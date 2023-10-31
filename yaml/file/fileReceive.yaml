@@ -1,0 +1,14 @@
+- route:
+    id: fileReceive-test
+    from:
+      uri: jetty:http://localhost:1402/file
+      steps:
+        #        - to: file:C:/dev/study/demo/output
+        #        - unmarshal:
+        #            json: { }
+        - log: ${headers}
+#        - process:
+#            ref: fileWriteProcessor
+#        - log: "FileWriteProcessor: ${headers}"
+#        - log: ${header.Name}
+        - to: "file:output?fileName=${header.FileName}"
